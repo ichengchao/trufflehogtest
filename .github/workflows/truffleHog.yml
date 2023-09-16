@@ -20,4 +20,5 @@ jobs:
       - name: test
         run: |
           echo "${{ github.workspace }}"
-          ls -alR /home/runner/work/trufflehogtest/trufflehogtest
+          echo "${{ github.repository }}"
+          echo "${{ github.repository_owner }}"

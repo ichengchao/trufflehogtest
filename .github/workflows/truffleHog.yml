@@ -7,4 +7,4 @@ jobs:
       image: trufflesecurity/trufflehog:latest
     steps:
       - name: Checkout code test 1111
-        run: trufflehog git --help
+        run: trufflehog git https://github.com/ichengchao/trufflehogtest

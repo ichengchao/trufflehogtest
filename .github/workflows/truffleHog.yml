@@ -8,7 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Checkout code test 1111
-        continue-on-error: true
         run: |
           rm -rf /__w/trufflehogtest/trufflehogtest/.git
           trufflehog filesystem /__w/trufflehogtest/trufflehogtest --no-verification --no-update --fail

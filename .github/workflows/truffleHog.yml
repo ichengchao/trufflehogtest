@@ -12,3 +12,4 @@ jobs:
           trufflehog git https://github.com/ichengchao/trufflehogtest
           ls -lR /github
           ls -lR /home
+          ls -lR /__w

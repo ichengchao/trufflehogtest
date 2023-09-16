@@ -6,7 +6,9 @@ jobs:
     container:
       image: trufflesecurity/trufflehog:latest
     steps:
+      - uses: actions/checkout@v3
       - name: Checkout code test 1111
         run: |
           trufflehog git https://github.com/ichengchao/trufflehogtest
-          ls -l /
+          ls -l /github
+          ls -l /home

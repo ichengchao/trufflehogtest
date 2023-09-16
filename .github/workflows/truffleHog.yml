@@ -8,12 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Checkout code test 1111
+        continue-on-error: true
         run: |
           rm -rf /__w/trufflehogtest/trufflehogtest/.git
-          trufflehog filesystem /__w/trufflehogtest/trufflehogtest --no-verification --no-update
-          echo "::set-output name=status::$?"
+          trufflehog filesystem /__w/trufflehogtest/trufflehogtest --no-verification --no-update --fail
+          if [ $? -eq 183 ]; then echo "error   2222222222222222" && exit 1; fi
       - name: send msg
+        if: steps.trufflehog.outcome == 'failure'
         run: |
-          if [ "${{ steps.step1.outputs.status }}" -eq 183 ]; then
-            echo "Previous command failed with exit code 183  11111"
-          fi
+          echo "error   876868767878608760876"

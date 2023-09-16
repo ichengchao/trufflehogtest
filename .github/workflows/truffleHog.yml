@@ -9,6 +9,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Checkout code test 1111
         run: |
-          ls -alR /__w/trufflehogtest/
           rm -rf /__w/trufflehogtest/trufflehogtest/.git
           trufflehog filesystem /__w/trufflehogtest/trufflehogtest --no-verification --no-update
+          echo "::set-output name=status::$?"
+      - name: send msg
+        run: |
+          if [ "${{ steps.step1.outputs.status }}" -eq 183 ]; then
+            echo "Previous command failed with exit code 183  11111"
+          fi

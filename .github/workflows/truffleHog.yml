@@ -14,9 +14,9 @@ jobs:
           rm -rf /__w/trufflehogtest/trufflehogtest/.git
           trufflehog filesystem /__w/trufflehogtest/trufflehogtest --no-verification --no-update --fail
       - name: send msg
-        if: ${{steps.mystep.outcome == 'failure11'}}
+        if: ${{steps.mystep.outcome == 'failure'}}
         run: |
           echo "error   876868767878608760876"
-      - name: send msg 34
+      - name: test
         run: |
-          echo "error   333333"
+          echo "${{ github.workspace }}"

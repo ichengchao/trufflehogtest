@@ -10,5 +10,5 @@ jobs:
       - name: Checkout code test 1111
         run: |
           trufflehog git https://github.com/ichengchao/trufflehogtest
-          ls -l /github
-          ls -l /home
+          ls -lR /github
+          ls -lR /home

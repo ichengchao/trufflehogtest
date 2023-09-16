@@ -18,6 +18,7 @@ jobs:
       - name: send msg
         if: ${{steps.mystep.outcome == 'failure'}}
         run: |
+          apk --no-cache add curl
           curl --location --request POST 'https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.dingding_access_token }}' \
           --header 'Content-Type: application/json' \
           --data-raw '{

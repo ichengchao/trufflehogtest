@@ -18,9 +18,12 @@ jobs:
       - name: send msg
         if: ${{steps.mystep.outcome == 'failure'}}
         run: |
-          echo "error   876868767878608760876"
-      - name: test
-        run: |
-          echo "${{ github.workspace }}"
-          echo "${{ github.repository }}"
-          echo "${{ github.repository_owner }}"
+          curl --location --request POST 'https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.dingding_access_token }}' \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+              "msgtype": "markdown",
+              "markdown": {
+                  "title": "TruffleHog Bingo",
+                  "text": "### Blog Deploy \n\n-----------------   \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }}"
+              }
+          }'

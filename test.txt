@@ -9,3 +9,11 @@ PELICh+4GANKJQQ755BqTd6px7sm6BzyR6II7TF+
 =======
 test1frewfjoi3e
 >>>>>>> ec255bd65307add638d4feddf5ba995d419e039f
+
+<<<<<<< HEAD
+aws key
+AKIAWJY3VMZXO7ANO5ON
+PELICh+4GANKJQQ755BqTd6px7sm6BzyR6II7TF+
+=======
+test1frewfjoi3e
+>>>>>>> ec255bd65307add638d4feddf5ba995d419e039f

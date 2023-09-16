@@ -11,8 +11,10 @@ jobs:
         id: mystep
         continue-on-error: true
         run: |
-          rm -rf /__w/trufflehogtest/trufflehogtest/.git
-          trufflehog filesystem /__w/trufflehogtest/trufflehogtest --no-verification --no-update --fail
+          mystring="${{ github.workspace }}"
+          echo ${mystring:18}
+          rm -rf /__w/${mystring:18}/.git
+          trufflehog filesystem /__w/${mystring:18} --no-verification --no-update --fail
       - name: send msg
         if: ${{steps.mystep.outcome == 'failure'}}
         run: |

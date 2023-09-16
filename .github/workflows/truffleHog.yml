@@ -3,15 +3,8 @@ on: [push]
 jobs:
   TruffleHog:
     runs-on: ubuntu-latest
+    container:
+      image: trufflesecurity/trufflehog:latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
-          extra_args: --trace
+      - name: Checkout code test 1111
+        run: trufflehog git --help

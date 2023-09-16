@@ -13,9 +13,8 @@ jobs:
         run: |
           rm -rf /__w/trufflehogtest/trufflehogtest/.git
           trufflehog filesystem /__w/trufflehogtest/trufflehogtest --no-verification --no-update --fail
-          if [ $? -eq 183 ]; then echo "error   2222222222222222" && exit 1; fi
       - name: send msg
-        if: ${{steps.mystep.outcome == 'failure'}}
+        if: ${{steps.mystep.outcome == 'failure11'}}
         run: |
           echo "error   876868767878608760876"
       - name: send msg 34

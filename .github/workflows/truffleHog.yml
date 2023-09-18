@@ -7,7 +7,7 @@ jobs:
       image: trufflesecurity/trufflehog:latest
     steps:
       - uses: actions/checkout@v3
-      - name: Checkout code test 1111
+      - name: Checkout code test
         id: mystep
         continue-on-error: true
         run: |
@@ -25,6 +25,6 @@ jobs:
               "msgtype": "markdown",
               "markdown": {
                   "title": "TruffleHog Bingo",
-                  "text": "### Blog Deploy \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }}"
+                  "text": "### TruffleHog Bingo \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }}"
               }
           }'

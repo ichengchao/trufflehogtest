@@ -25,6 +25,6 @@ jobs:
               "msgtype": "markdown",
               "markdown": {
                   "title": "TruffleHog Bingo",
-                  "text": "### TruffleHog Bingo \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }}"
+                  "text": "### TruffleHog Bingo ☞ AK \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }}"
               }
           }'

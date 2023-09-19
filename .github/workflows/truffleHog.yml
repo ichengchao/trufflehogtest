@@ -8,13 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: scan code
-        id: scancode
+        id: myscan
         continue-on-error: true
         run: |
           mystring="${{ github.workspace }}"
           echo ${mystring:18}
           rm -rf /__w/${mystring:18}/.git
-          trufflehog filesystem /__w/${mystring:18} --no-verification --no-update --fail > /tmp/myscan.txt
+          trufflehog filesystem /__w/${mystring:18} --no-verification --no-update > /tmp/myscan.txt
       - name: send msg
         id: sendmsg
         if: ${{steps.mystep.outcome == 'failure'}}

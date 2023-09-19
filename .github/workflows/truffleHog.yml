@@ -18,7 +18,7 @@ jobs:
           trufflehog filesystem /__w/${mystring:18} --no-verification --no-update --fail
       - name: send msg
         id: sendmsg
-        if: ${{steps.mystep.outcome == 'failure'}}
+        if: ${{steps.scancode.outcome == 'failure'}}
         run: |
           MYRESULT=`cat /tmp/myscan.txt`
           echo "--------------------------------------------------------"

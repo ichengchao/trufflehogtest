@@ -12,4 +12,5 @@ jobs:
         continue-on-error: true
         run: |
           echo "--------------------------------------"
+          /usr/bin/git config --global -l
           echo "`/usr/bin/git config --global --get safe.directory`"

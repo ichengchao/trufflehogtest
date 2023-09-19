@@ -11,10 +11,11 @@ jobs:
         id: scancode
         continue-on-error: true
         run: |
-          mystring="${{ github.workspace }}"
-          echo ${mystring:18}
-          rm -rf /__w/${mystring:18}/.git
-          trufflehog filesystem /__w/${mystring:18} --no-verification --no-update --fail > /tmp/myscan.txt
+          myworkpath=`git config --global --get safe.directory`
+          echo "--------------------------------------"
+          echo "$myworkpath"
+          rm -rf $myworkpath/.git
+          trufflehog filesystem $myworkpath --no-verification --no-update --fail > /tmp/myscan.txt
       - name: send msg
         id: sendmsg
         if: ${{steps.scancode.outcome == 'failure'}}

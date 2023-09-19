@@ -11,7 +11,7 @@ jobs:
         id: scancode
         continue-on-error: true
         run: |
-          myworkpath=`git config --global --get safe.directory`
+          myworkpath=`/usr/bin/git config --global --get safe.directory`
           echo "--------------------------------------"
           echo "$myworkpath"
           rm -rf $myworkpath/.git

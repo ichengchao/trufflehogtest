@@ -20,9 +20,6 @@ jobs:
         if: ${{steps.scancode.outcome == 'failure'}}
         run: |
           MYRESULT=`cat /tmp/myscan.txt`
-          echo "--------------------------------------------------------"
-          echo $MYRESULT
-          echo "--------------------------------------------------------"
           apk --no-cache add curl
           curl --location --request POST 'https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.dingding_access_token }}' \
           --header 'Content-Type: application/json' \
@@ -30,6 +27,6 @@ jobs:
               "msgtype": "markdown",
               "markdown": {
                   "title": "TruffleHog Bingo",
-                  "text": "### TruffleHog Bingo ☞ AK \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }} \n\n "$MYRESULT""
+                  "text": "### TruffleHog Bingo ☞ AK \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }} \n\n '"$MYRESULT"'"
               }
           }'

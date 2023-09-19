@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: scan code
-        id: mystep
+        id: scancode
         continue-on-error: true
         run: |
           mystring="${{ github.workspace }}"
@@ -16,9 +16,16 @@ jobs:
           rm -rf /__w/${mystring:18}/.git
           trufflehog filesystem /__w/${mystring:18} --no-verification --no-update --fail > /tmp/myscan.txt
       - name: send msg
+        id: sendmsg
         if: ${{steps.mystep.outcome == 'failure'}}
         run: |
           MYRESULT=`cat /tmp/myscan.txt`
+          echo "--------------------------------------------------------"
+          echo $MYRESULT
+          echo "scan_result=`cat /tmp/myscan.txt`" >> $GITHUB_OUTPUT
+          echo "--------------------------------------------------------"
+          echo "${{steps.sendmsg.outputs.scan_result}}"
+          echo "--------------------------------------------------------"
           apk --no-cache add curl
           curl --location --request POST 'https://oapi.dingtalk.com/robot/send?access_token=${{ secrets.dingding_access_token }}' \
           --header 'Content-Type: application/json' \
@@ -26,6 +33,6 @@ jobs:
               "msgtype": "markdown",
               "markdown": {
                   "title": "TruffleHog Bingo",
-                  "text": "### TruffleHog Bingo ☞ AK \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }} \n\n $MYRESULT"
+                  "text": "### TruffleHog Bingo ☞ AK \n\n-----------------   \n\n **repository:** ${{ github.repository }} \n\n **message:** ${{ github.event.head_commit.message }}  \n\n **author:** ${{ github.actor }} \n\n ${{steps.sendmsg.outputs.scan_result}}"
               }
           }'

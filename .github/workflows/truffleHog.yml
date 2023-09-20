@@ -12,7 +12,6 @@ jobs:
         continue-on-error: true
         run: |
           echo $GITHUB_WORKSPACE
-      - name: Undo Push
-        uses: exions/undo-push@v1
-        with:
-          branch: ${{ github.event.inputs.branch }}
+          cd $GITHUB_WORKSPACE
+          git status
+          git remote -v
